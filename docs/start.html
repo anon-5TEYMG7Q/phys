@@ -26,6 +26,15 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <style>
+ 
+pre {
+    font-size: 11px;
+    max-height: 500px;
+    <!--overflow-wrap: break-word;-->
+}
+    </style>
+
     
 </head> 
 
@@ -64,21 +73,21 @@
                                     <p>Get <b>phys</b> with git:</p>
 
                                     <div class="code-block">
-                                        <p><code> git clone https://github.com/anon-326DA51O/phys.git</code></p>
+                                        <p><code> git clone https://github.com/anon-5TEYMG7Q/phys.git </code>(BROWSING THAT PAGE MIGHT UNMASK AUTHORS!!!) </p>
                                     </div><!--//code-block-->
-                                    <p>Or download a ZIP file of the repo.</p>
-                                    <a href="https://github.com/anon-326DA51O/phys/archive/master.zip" class="btn btn-green" target="_blank"><i class="fa fa-download"></i>Download phys</a>
+                                    <p>Or download a ZIP file of the repo, and unzip it.</p>
+                                    <a href="https://github.com/anon-5TEYMG7Q/phys/archive/master.zip" class="btn btn-green" target="_blank"><i class="fa fa-download"></i>Download phys (30Mb, zip)</a>
                                 </div>
                             </section><!--//doc-section-->
                             <section id="installation-section" class="doc-section">
                                 <h2 class="section-title">Installation</h2>
                                 <div id="step1"  class="section-block">
                                     <h3 class="block-title">Step One</h3>
-                                    <p>Install <a href="https://docs.docker.com/install/">Docker</a>.  The Dockerfile for <b>phys</b> has been tested with Ubuntu 16.04.</p>
+                                    <p>Get <b>Docker</b>.  Click <a target="_blank" href="https://docs.docker.com/install/">here for Docker's install page</a>.  The Dockerfile for <b>phys</b> has been tested with Ubuntu 16.04.</p>
                                 </div><!--//section-block-->
                                 <div id="step2"  class="section-block">
                                     <h3 class="block-title">Step Two</h3>
-                                        <p>From the command line, build <b>phys</b> with docker:</p>
+                                    <p>From the command line, navigate to the <b>phys</b> root directory and build with docker:</p>
                                     <div class="code-block">
                                         <p><code>docker build . -t phys</code></p>
                                     </div><!--//code-block-->
@@ -129,43 +138,277 @@ file:/data/summit_xl_robot_control.cpp, strong:8,weak:1,
                                     <h3 class="block-title">Example 2: Infer Physical Unit (PU) Abstract Types</h3>
                                     <div class="code-block">
                                         <h6>This example shows the predicted physical units (the abstract type) inferred by <b>phys</b> for each variable:</h6>
-                                        <p><code>docker run -v "$(pwd)"/data:/data phys /data/bayesian_compact_ware/ard/src/ard_node.cpp</code></p>
+                                        <p><code>docker run -v "$(pwd)"/data:/data phys /data/bayesian_compact_ware/ard/src/ard_node.cpp --print_variable_types</code></p>
                                     </div><!--//code-block-->
                                     </p>
 <p>This outputs the variable names from the file and the list of possible physical unit types sorted by likelihood:</p>
 <p><pre>
-status_.velocity_hs:
-[({'second': -1.0, 'meter': 1.0}, 0.6562499999999178), ({'second': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
 
-status_.lock_hs:
-[({'second': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
 
-timeout:
-[({'second': 1.0}, 0.617647058823602), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+current_error_y:
+[({'meter': 1.0}, 0.9999982819637612), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
 
-col[index]:
-[({'second': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+diff_error_x:
+[({'meter': 1.0}, 0.9980174990808746), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
 
-timeout_:
-[({'second': 1.0}, 0.9417040358744564), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+q2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
 
-col[member]:
-[({'second': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+px:
+[({'meter': 1.0}, 0.9947641035220387), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
 
-status_.priority:
-[({'quaternion': 1.0}, 0.6086956521739131), ({'second': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+t2:
+[({'quaternion': 1.0}, 0.9090909090909091), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
 
-DIAGNOSTICS_PERIOD:
-[({'second': 1.0}, 0.6363636363636364), ({'meter': 1.0}, 0.6086956521739131), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'quaternion': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'second': -1.0, 'meter': 1.0}, 0.5833333333333333)]
+t1:
+[({'quaternion': 1.0}, 0.9090909090909091), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+current_error_x:
+[({'meter': 1.0}, 0.9999982819637612), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+q1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+ic_sig.doit:
+[({'quaternion': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+
+t0:
+[({'quaternion': 1.0}, 0.9090909090909091), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+diff_error_y:
+[({'meter': 1.0}, 0.9980174990808746), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+py:
+[({'meter': 1.0}, 0.9947641035220387), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+previous_error_x:
+[({'meter': 1.0}, 0.9998883101315769), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+previous_error_y:
+[({'meter': 1.0}, 0.9998883101315769), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+r1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+t3:
+[({'quaternion': 1.0}, 0.9090909090909091), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+Solving Constraints 2 ... 2018-06-25 14:12:07 
+current_error_y:
+[({'meter': 1.0}, 0.9999983806090804), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+diff_error_x:
+[({'meter': 1.0}, 0.9995207264849759), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+q2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+px:
+[({'meter': 1.0}, 0.9947641204249956), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+t2:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+current_error_x:
+[({'meter': 1.0}, 0.9999983806090804), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+q1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+ic_sig.doit:
+[({'quaternion': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+
+t0:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+diff_error_y:
+[({'meter': 1.0}, 0.9995207264849759), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+t1:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+previous_error_x:
+[({'meter': 1.0}, 0.9999743485109791), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+previous_error_y:
+[({'meter': 1.0}, 0.9999743485109791), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+r1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+py:
+[({'meter': 1.0}, 0.9947641204249956), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+t3:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+Solving Constraints 3 ... 2018-06-25 14:12:07 
+current_error_y:
+[({'meter': 1.0}, 0.9999983806090804), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+diff_error_x:
+[({'meter': 1.0}, 0.9995207264849759), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+q2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+px:
+[({'meter': 1.0}, 0.9947641204249956), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+t2:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+current_error_x:
+[({'meter': 1.0}, 0.9999983806090804), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+q1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+ic_sig.doit:
+[({'quaternion': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+
+t0:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+diff_error_y:
+[({'meter': 1.0}, 0.9995207264849759), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+t1:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+previous_error_x:
+[({'meter': 1.0}, 0.9999743485109791), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+previous_error_y:
+[({'meter': 1.0}, 0.9999743485109791), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+r1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+py:
+[({'meter': 1.0}, 0.9947641204249956), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+t3:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+Solving Constraints 4 ... 2018-06-25 14:12:07 
+current_error_y:
+[({'meter': 1.0}, 0.9999983806090804), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+diff_error_x:
+[({'meter': 1.0}, 0.9995207264849759), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+q2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+px:
+[({'meter': 1.0}, 0.9947641204249956), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+t2:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+current_error_x:
+[({'meter': 1.0}, 0.9999983806090804), ({'quaternion': 1.0}, 4.5180781192533104e-05), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 4.5180781192533104e-05), ({'degree_celsius': 1.0}, 4.5180781192533104e-05)]
+
+q1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+ic_sig.doit:
+[({'quaternion': 1.0}, 0.5833333333333333), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5833333333333333), ({'degree_celsius': 1.0}, 0.5833333333333333), ({'meter': 1.0}, 0.5833333333333333)]
+
+t0:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+diff_error_y:
+[({'meter': 1.0}, 0.9995207264849759), ({'quaternion': 1.0}, 0.003899435685769781), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.003899435685769781), ({'degree_celsius': 1.0}, 0.003899435685769781)]
+
+t1:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+previous_error_x:
+[({'meter': 1.0}, 0.9999743485109791), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+previous_error_y:
+[({'meter': 1.0}, 0.9999743485109791), ({'quaternion': 1.0}, 0.00023435297609752936), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.00023435297609752936), ({'degree_celsius': 1.0}, 0.00023435297609752936)]
+
+r1:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+py:
+[({'meter': 1.0}, 0.9947641204249956), ({'quaternion': 1.0}, 0.05004066270307328), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.05004066270307328), ({'degree_celsius': 1.0}, 0.05004066270307328)]
+
+t3:
+[({'quaternion': 1.0}, 0.9763617677286742), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r2:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r3:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+r0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
+q0:
+[({'quaternion': 1.0}, 0.9947643979057592), ({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0}, 0.5), ({'degree_celsius': 1.0}, 0.5), ({'meter': 1.0}, 0.5)]
+
 </pre></p>
                                 </div><!--//section-block-->
 
                                 <div id="ex3" class="section-block">
                                     <h3 class="block-title">Example 3: Show constraints</h3>
                                     <div class="code-block">
-                                        <h6>This example shows the predicted physical units (the abstract type) inferred by <b>phys</b> for each variable:</h6>
+                                        <h6>This example shows the constraints generated during each round of analysis:</h6>
 
-                                        <p><code>docker run -v "$(pwd)"/data:/data phys /data/summit_xl_sim/summit_xl_robot_control/src/summit_xl_robot_control.cpp</code></p>
+                                        <p><code>docker run -v "$(pwd)"/data:/data phys /data/summit_xl_sim/summit_xl_robot_control/src/summit_xl_robot_control.cpp --print_constraints</code></p>
 <p>Note that the input here is the same file as <a class="scrollto" href="#ex1">example 1</a>, but we're looking at a different part of the output.</p>
                                     </div><!--//code-block-->
                                     </p>
@@ -548,7 +791,7 @@ nm_constraint: response.mode [({'second': -2.0, 'meter': -1.0, 'kilogram': 1.0},
     <footer id="footer" class="footer text-center">
         <div class="container">
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
-            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" targe="_blank">Xiaoying Riley</a> for developers</small>
+            <!--<small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" targe="_blank">Xiaoying Riley</a> for developers</small>-->
             
         </div><!--//container-->
     </footer><!--//footer-->

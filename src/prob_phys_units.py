@@ -41,7 +41,9 @@ def _log(msg):
 @click.argument('target_cpp_file')
 @click.option('--correction_file', default='', help='file with unit correction')
 @click.option('--should_print_one_line_summary', default='True', help='prints a one-line summary of inconsistencies')
-def main(target_cpp_file, correction_file, should_print_one_line_summary):
+@click.option('--print_constraints/--no-print_constraints', default='False', help='prints constaints used during analysis.')
+@click.option('--print_variable_types/--no-print_variable_types', default='False', help='For each variable, prints the physical unit type assignment as a probability distribution.')
+def main(target_cpp_file, correction_file, should_print_one_line_summary, print_constraints, print_variable_types):
     original_directory = os.getcwd()
 
     SHOULD_SUPRESS_OUTPUT_FILES = False  # DURING PARALLEL OPERATION
@@ -121,8 +123,10 @@ def main(target_cpp_file, correction_file, should_print_one_line_summary):
     my_type_miner.train(True)  # True = TRY TO REUSE PREVIOUS TRAINING
 
     con_collector = ConstraintCollector(my_type_miner)
+    con_collector.SHOULD_PRINT_CONSTRAINTS = print_constraints
     con_scoper = ConstraintScoper()
     con_solver = ConstraintSolver(con_collector, con_scoper, SHOULD_USE_CONSTRAINT_SCOPING)
+    con_solver.SHOULD_PRINT_VARIABLE_TYPES = print_variable_types
     
     _log("Collecting Constraints ... %s " % strftime("%Y-%m-%d %H:%M:%S", gmtime()))
     # COLLECT CONSTRAINTS    

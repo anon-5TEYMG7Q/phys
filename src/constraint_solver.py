@@ -9,6 +9,7 @@ class ConstraintSolver:
     def __init__(self, my_con_collector, my_con_scoper, SHOULD_USE_CONSTRAINT_SCOPING=False):
         self.con_collector = my_con_collector
         self.con_scoper = my_con_scoper
+        self.SHOULD_PRINT_VARIABLE_TYPES = False
         self.SHOULD_USE_CONSTRAINT_SCOPING = SHOULD_USE_CONSTRAINT_SCOPING
         self.ENABLE_SCOPER = False
         self.pred2pgmvar = {}
@@ -56,7 +57,8 @@ class ConstraintSolver:
             var2unitproba[v].sort(key=itemgetter(1), reverse=True)
             if (var2unitproba[v][0][1] == 0.5):
                 continue
-            print '%s:\n%s\n' % (v[1], var2unitproba[v])
+            if self.SHOULD_PRINT_VARIABLE_TYPES:
+                print '%s:\n%s\n' % (v[1], var2unitproba[v])
 
         con.variable2unitproba = var2unitproba
         #con.reset_constraints()        

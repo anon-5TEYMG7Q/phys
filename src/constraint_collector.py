@@ -13,6 +13,7 @@ from collections import OrderedDict
 class ConstraintCollector:
 
     def __init__(self, my_type_miner):
+        self.SHOULD_PRINT_CONSTRAINTS = False
         self.type_miner = my_type_miner
         self.current_file_under_analysis = ''
         self.source_file = ''
@@ -23,13 +24,7 @@ class ConstraintCollector:
         self.should_sort_by_function_graph = True
         self.should_abandon_early = True
         self.configurations = []
-        self.SHOULD_USE_DEEP_LEARNING_VAR_NAME_HEURISTIC = False
         self.vnh = None
-        if self.SHOULD_USE_DEEP_LEARNING_VAR_NAME_HEURISTIC:
-            # THIS IS A HEAD LOAD -- KERAS
-            from var_name_heuristic import VarNameHeuristic
-            self.vnh = VarNameHeuristic()
-            self.vnh.init_default_models()
 
 
     def init_cppcheck_config_data_structures(self, cppcheck_configuration):  
@@ -224,12 +219,8 @@ class ConstraintCollector:
             tw.generic_recurse_and_apply_function(root_token, tw.collect_angle_unit_constraints)
             #KNOWN SYMBOL CONSTRAINTS
             tw.generic_recurse_and_apply_function(root_token, tw.collect_known_symbol_constraints)
-            if not self.SHOULD_USE_DEEP_LEARNING_VAR_NAME_HEURISTIC:
-                #NAMING CONSTRAINTS
-                tw.generic_recurse_and_apply_function(root_token, tw.collect_naming_constraints)
-            else:            
-                #DEEP LEARNING NAMING CONSTRAINTS
-                tw.generic_recurse_and_apply_function(root_token, tw.collect_deep_network_naming_constraints)
+            #NAMING CONSTRAINTS
+            tw.generic_recurse_and_apply_function(root_token, tw.collect_naming_constraints)
         # END -- FOR LOOP 
 
         if (not found_units) and function_dict['scopeObject'].function \
@@ -398,11 +389,12 @@ class ConstraintCollector:
             for function_dict in sorted_analysis_unit_dict.values():
                 self.collect_constraints(function_dict)
 
-            self.print_all_computed_unit_constraints()
-            self.print_all_df_constraints()
-            self.print_all_conversion_factor_constraints()
-            self.print_all_known_symbol_constraints()
-            self.print_all_naming_constraints()
+            if self.SHOULD_PRINT_CONSTRAINTS:
+                self.print_all_computed_unit_constraints()
+                self.print_all_df_constraints()
+                self.print_all_conversion_factor_constraints()
+                self.print_all_known_symbol_constraints()
+                self.print_all_naming_constraints()
 
             self.configurations.append(c)
 
@@ -419,13 +411,14 @@ class ConstraintCollector:
         for function_dict in sorted_analysis_unit_dict.values():
             self.repeat_collect_constraints(function_dict)
 
-        print "Round %d:" % i
-        print "========"
-        self.print_all_computed_unit_constraints()
-        self.print_all_df_constraints()
-        self.print_all_conversion_factor_constraints()
-        self.print_all_known_symbol_constraints()
-        self.print_all_naming_constraints()      
+        if self.SHOULD_PRINT_CONSTRAINTS:
+            print "Round %d:" % i
+            print "========"
+            self.print_all_computed_unit_constraints()
+            self.print_all_df_constraints()
+            self.print_all_conversion_factor_constraints()
+            self.print_all_known_symbol_constraints()
+            self.print_all_naming_constraints()      
 
 
     def propagate_units(self, function_dict):

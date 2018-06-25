@@ -11,7 +11,8 @@ As per https://arxiv.org/pdf/1609.00037, please find the source code in the 'src
 
 
 Available:
-The artifact is currently publicly available at https://github.com/anon-326DA51O/phys.
-NOTE: We will replace the anonymous github account with our own after the review period.
+The artifact is publicly available at https://git.io/f4SjG  (LINK WILL UNMASK AUTHORS!!!).
+ARTIFACT REVIEWER NOTE: We will replace the anonymous github account with our own after the review period.
+
 
 

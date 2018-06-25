@@ -7,7 +7,7 @@ Artifact repository for the FSE2018 accepted paper "Phys: Probabilistic Physical
 ### Summary
 
 
-**Phys** is a static analysis tool for detecting physical unit (PU) inconsistencies in C++ files that build against the [Robot Operation System](http://www.ros.org/), using pro ballistic graphical models together with dataflow analysis.
+**Phys** is a static analysis tool for detecting physical unit (PU) inconsistencies in C++ files that build against the [Robot Operation System](http://www.ros.org/), using probabilistic graphical models together with dataflow analysis.
 
 
 ### Contents

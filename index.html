@@ -13,7 +13,9 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <!-- Global CSS -->
     <link rel="stylesheet" href="docs/assets/plugins/bootstrap/css/bootstrap.min.css">   
+
     <!-- Plugins CSS -->    
+    <link rel="stylesheet" href="docs/assets/plugins/prism/prism.css">
     <link rel="stylesheet" href="docs/assets/plugins/font-awesome/css/font-awesome.css">
     <link rel="stylesheet" href="docs/assets/plugins/elegant_font/css/style.css">
     
@@ -24,6 +26,7 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head> 
 
 <body class="landing-page">   
@@ -62,6 +65,31 @@
             <div class="container">
                 <h2 class="title">Getting started is easy! <a href="docs/start.html">QuickStart</a></h2>
                 <div class="intro">
+
+                  <p><b>phys</b> is a tool to detect physical unit inconsistencies in C++ that builds against the Robot Operating System.  <b>phys</b> is a command-line tool that can be used with Docker.</p>
+                      
+                      
+                  <h6 class="title">Example</h6>
+                  <p>For example, assume a developer is building a robot and wants to calculate the length of the hypotenuse of a triangle with sides x_err and y_err, but the developer accidently uses a multiply symbol (*) instead of an addition symbol (+), and ends up adding x_err * x_err (meter-squared) to err_y (meter):</p>
+                      <div class="code-block">
+                        <p>
+                        <code>
+                        err_d  = sqrt( <span style="color:#F00">err_x * err_x</span> + <span style="color:#FF0">err_y</span> + <span style="color:#FF0">err_y)</span>;
+                                                          
+                        </code> <a target="_blank" href="https://github.com/LordBismaya/FrenchVanilla/blob/master/src/turtlebot_example/src/turtlebot_example_node.cpp#L30">(source)</a>
+                          </p>
+                          <p>This code compiles and can be difficult to detect. <i>Yikes!</i>  This kind of error is called a physical unit inconsistency, and <b>phys</b> can detect it <i>without developer annotations</i>.</p>
+                      </div>
+                      <!--<div class="code-block">-->
+                        <!--<p>Here the calculated_wrench.wrench.force.z <a href="http://docs.ros.org/kinetic/api/geometry_msgs/html/msg/Wrench.html">data structure that expects a force</a> (kilogram-meter-squared-per-second-squared)-->
+                        <!--is assigned from twistmsg.linear.z, <a href="http://docs.ros.org/api/geometry_msgs/html/msg/Twist.html">data structure defined</a> in <a href="http://www.ros.org">ROS</a> to mean velocity (meters-per-second).  The inconsistency is of the type ASSIGNMENT OF MULTIPLE UNITS. -->
+                  <!--</p>-->
+                  <!--<p><code><span style="background:#000; color:#F00">calculated_wrench.wrench.force.z</span> = <span style="background:#000;color:#FF0">twistmsg.linear.z;</span></code> <a href="https://github.com/UVa-StarLab/bebop2_controller/blob/master/src/bebop_movement_limiter.cpp#L178">source</a></p>-->
+                      <!--</div>-->
+
+
+                      
+                      <!--//code-block-->
                     <!--<div class="cta-container">-->
                         <!--<pre>git clone https://github.com/anon-326DA51O/phys.git</pre>-->
                         <!--<pre> docker build . -t phys</pre>-->
@@ -127,8 +155,8 @@
                             <div class="icon-holder">
                                 <span aria-hidden="true" class="icon icon_gift"></span>
                             </div><!--//icon-holder-->
-                            <h3 class="title">License &amp; Credits</h3>
-                            <p class="intro">Layout for license &amp; credits page. Consectetuer adipiscing elit.</p>
+                            <h3 class="title">License, Credits, &amp; Funding</h3>
+                            <p class="intro">Yes, <b>phys</b> is open source. See the license, credits to existing tools, and details about funding support.</p>
                             <a class="link" href="docs/license.html"><span></span></a>
                         </div><!--//item-inner-->
                     </div><!--//item-->
@@ -141,7 +169,7 @@
     <footer class="footer text-center">
         <div class="container">
             <!--/* This template is released under the Creative Commons Attribution 3.0 License. Please keep the attribution link below when using for your own project. Thank you for your support. :) If you'd like to use the template without the attribution, you can check out other license options via our website: themes.3rdwavemedia.com */-->
-            <small class="copyright">Designed with <i class="fa fa-heart"></i> by <a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>
+            <!--<small class="copyright"><a href="http://themes.3rdwavemedia.com/" target="_blank">Xiaoying Riley</a> for developers</small>-->
             
         </div><!--//container-->
     </footer><!--//footer-->
@@ -149,10 +177,12 @@
      
     <!-- Main Javascript -->          
     <script type="text/javascript" src="docs/assets/plugins/jquery-1.12.3.min.js"></script>
-    <script type="text/javascript" src="docs/assets/plugins/bootstrap/js/bootstrap.min.js"></script>                                                                     
+    <script type="text/javascript" src="docs/assets/plugins/bootstrap/js/bootstrap.min.js"></script>                                                                    
     <script type="text/javascript" src="docs/assets/plugins/jquery-match-height/jquery.matchHeight-min.js"></script>
     <script type="text/javascript" src="docs/assets/js/main.js"></script>
     
+    <script type="text/javascript" src="docs/assets/plugins/prism/prism.js"></script>    
+    <script type="text/javascript" src="docs/assets/plugins/jquery-scrollTo/jquery.scrollTo.min.js"></script>                                                                
 </body>
 </html> 
 
