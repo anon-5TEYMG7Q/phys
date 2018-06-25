@@ -1,4 +1,4 @@
-#Copyright (c) 2016, University of Nebraska NIMBUS LAB  John-Paul Ore jore@cse.unl.edu
+#Copyright (c) 2018, [REDACTED]
 #All rights reserved.
 
 
